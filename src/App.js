@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Contact } from './components/Contact';
+import { Header } from './components/Header';
+import { Navbar } from './components/Navbar';
+import { Projects } from './components/Projects';
+import { Transition } from './components/Transitiion';
 
-function App() {
+
+
+export default function App() {
+
+  const [secContact, setSecContact] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Transition />
+      <Navbar secContact = {secContact} setSecContact = {setSecContact}  />
+      <main className='h-full w-full text-white bg-gray-900'>
+        <Header />
+        <Projects />
+        <Contact secContact = {secContact} setSecContact = {setSecContact} />
+      </main>
+    </>
+  )
 }
-
-export default App;
