@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-#contact::-webkit-scrollbar{display: none;}
+#contact::-webkit-scrollbar, #carousel::-webkit-scrollbar{display: none;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
