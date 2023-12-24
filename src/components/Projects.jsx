@@ -1,17 +1,61 @@
+import todo from '../assets/todo.png'
+import porfolio from '../assets/portfolio.png'
+import catchme from '../assets/catchmegame.png'
+import ecom from '../assets/ecommerce.png'
+import movie from '../assets/Moviflix.png'
+import { useState } from 'react'
+
 import { motion } from 'framer-motion';
 
+
 export function Projects() {
+    const [positionIndex, setPositionIndex] = useState([0, 1, 2, 3, 4])
+
+    const handleNext = () => {
+        setPositionIndex((prev) => {
+            const updateIndex = prev.map((prev) => (prev + 1) % 5);
+            return updateIndex;
+        })
+    }
+    const imageContainer = [porfolio, ecom, catchme, todo, movie];
+
+    const position = ['center', 'left1', 'left', 'right', 'right1'];
+
+    const imageVariants = {
+        center: { x: '0%', scale: 1, zIndex: 5 },
+        left1: { x: '-50%', scale: 0.7, zIndex: 2 },
+        left: { x: '-90%', scale: 0.5, zIndex: 1 },
+        right: { x: '90%', scale: 0.5, zIndex: 1 },
+        right1: { x: '50%', scale: 0.7, zIndex: 2 }
+    }
+
     return (<>
         <section id="projects" className="w-full rounded-3xl py-16">
-            <div  className="w-full rounded-xl md:shadow-lg  hover:scale-[1.01] transition-all lg:shadow-slate-800  m-auto  lg:w-[50vw] md:p-8 p-4" >
 
-                <div id='carousel' className='flex rounded-lg shadow-slate-700  flex-row overflow-scroll gap-4'>
-                    <img src='https://pyxis.nymag.com/v1/imgs/3b7/ca7/5fd3353737d602a5a1caa3fce92cb33b39-rick-morty.jpg' alt='imaeg' />
-                    <img src='https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-10/231016-rick-and-morty-cs-7502c0.jpg' alt='imaeg' />
-                    <img src='https://pyxis.nymag.com/v1/imgs/3b7/ca7/5fd3353737d602a5a1caa3fce92cb33b39-rick-morty.jpg' alt='imaeg' />
+            <h1 className="text-center p-8 rounded-lg mb-4 bg-violet-950 shadow-md shadow-slate-700 opacity-80 text-3xl m-auto w-[90vw] lg:w-[50vw]"> Projects </h1>
+
+            <div className='w-full md:w-[75vw] m-auto -my-14' >
+                <div className='flex items-center flex-col justify-center h-screen'>
+                    {imageContainer.map((image, index) => (
+                        <motion.img
+                            key={index}
+                            src={image}
+                            alt={image}
+                            className='rounded-[12px] '
+                            initial='center'
+                            animate={position[positionIndex[index]]}
+                            variants={imageVariants}
+                            transition={{ duration: 0.5 }}
+                            style={{ width: '40%', position: 'absolute' }}
+                        />
+                    ))}
+                    <div className=' w-full md:w-[50Vw] flex justify-evenly'>
+                        <a href='https://github.com/KaranMaurya7' rel="noreferrer" target = '_blank' className='text-white mt-[400px] cursor-pointer bg-green-600 rounded-md py-2 px-4'>Github</a>
+                        <button className='text-white mt-[400px] bg-indigo-400 rounded-md py-2 px-4' onClick={handleNext}>Next Project</button>
+                    </div>
                 </div>
-
             </div>
+
         </section>
 
     </>)

@@ -29,7 +29,7 @@ const imageAni = {
 
 export function Header() {
     return (<>
-        <div className='w-full duration-300 transition-all  flex flex-row flex-wrap h-full bg-gray-900 p-6 pt-20 py-16  lg:m-auto lg:w-[70vw] lg:pt-[8%]'>
+        <div id = 'home' className='w-full duration-300 transition-all  flex flex-row flex-wrap h-full bg-gray-900 p-6 pt-20 py-16  lg:m-auto lg:w-[70vw] lg:pt-[8%]'>
 
             <motion.div
                 variants={imageAni} initial='initial' animate='animate' 
