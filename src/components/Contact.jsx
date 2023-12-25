@@ -11,7 +11,7 @@ export function Contact({ secContact, setSecContact }) {
 
             {secContact &&
                 <motion.div initial={{ y: '100vw', opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.3 }} exit={{ y: '100vw', opacity: 0 }}
-                    id="contact" className="w-full h-[87%]  overflow-scroll fixed top-[12%] left-0 bg-gray-400 rounded-3xl z:20 p-5">
+                    id="contact" className="w-full h-[87%]  overflow-scroll fixed top-[12%] left-0 bg-gray-400 rounded-3xl z-10 p-5">
                     <h1 className=" text-2xl text-black text-center font-bold m-auto p-3">Want To Stay Connected!</h1>
                     <div className="w-full md:w-[60%] lg:w-[35%] px-4  m-auto flex flex-row justify-between items-center">
                         <h2 className="text-black font-semibold text-lg"> Contact Us {flipContactForm ? 'Form' : 'Details'} </h2>

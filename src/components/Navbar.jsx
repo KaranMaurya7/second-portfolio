@@ -14,14 +14,14 @@ export function Navbar({ secContact, setSecContact }) {
                     {/* eslint-disable-next-line */}
 
                     <a href='#projects'>
-                        <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/4594/4594446.png' alt='icon' />
+                        <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/1545/1545205.png' alt='icon' />
                         <span className="hidden ml-3  hover:border-b-2  border-black lg:inline font-semibold text-xl">About</span>
                     </a>
                 </li>
                 <li className=' cursor-pointer duration-300 transition-all'>
                     {/* eslint-disable-next-line */}
                     <a href='#projects'>
-                        <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/2717/2717499.png' alt='icon' />
+                        <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/408/408557.png' alt='icon' />
                         <span className="hidden hover:border-b-2  border-black ml-3 lg:inline font-semibold text-xl">Projects</span>
                     </a>
                 </li>
@@ -29,7 +29,7 @@ export function Navbar({ secContact, setSecContact }) {
                 <li onClick={() => setSecContact(!secContact)} className=' cursor-pointer duration-300 transition-all'>
                     {/* eslint-disable-next-line */}
 
-                    <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/9374/9374883.png' alt='icon' />
+                    <img className='w-6 hover:scale-[1.2] lg:hidden inline cursor-pointer' src='https://cdn-icons-png.flaticon.com/128/3193/3193015.png' alt='icon' />
                     <span className="hidden  hover:border-b-2  border-black ml-3 lg:inline font-semibold text-xl">Contact</span>
 
                 </li>

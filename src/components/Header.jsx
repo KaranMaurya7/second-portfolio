@@ -52,6 +52,20 @@ export function Header() {
                 <button className='text-lg hover:scale-95 hover:shadow-[5px_4px_5px_1px_rgba(0,0,0,0.5)] hover:shadow-black transition-all shadow-[10px_8px_10px_2px_rgba(0,0,0,0.5)]  m-0 border w-[8rem] h-12 my-6  lg:mx-10'>
                     <a href='./Karan Maurya .pdf' target='_blank'>Resume</a>
                 </button>
+                <div className='lg:mx-10 flex flex-row gap-6'>
+                    <a href='https://www.linkedin.com/in/karan-maurya-9b6b29259/' target = '_blank'>
+                        <img  className='w-8' src='https://cdn-icons-png.flaticon.com/128/3991/3991775.png' alt= 'logo' />
+                    </a>
+                    <a href='https://github.com/KaranMaurya7' target = '_blank'>
+                        <img  className='w-8 brightness-0 invert' src='https://cdn-icons-png.flaticon.com/128/25/25657.png' alt= 'logo'/>
+                    </a>
+                    <a href='mailto:karanmaurya115@gmail.com' target = '_blank'>
+                        <img  className='w-8' src='https://cdn-icons-png.flaticon.com/128/893/893247.png' alt= 'logo'/>
+                    </a>
+                    <a href='https://www.instagram.com/_bugs__bunny___/?hl=en' target = '_blank'>
+                        <img  className='w-8' src='https://cdn-icons-png.flaticon.com/128/1384/1384063.png' alt= 'logo'/>
+                    </a>
+                </div>
 
             </div>
         </div>
