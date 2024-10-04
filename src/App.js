@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <>
-      
+      <Transition/>
       <Navbar secContact = {secContact} setSecContact = {setSecContact} />
       
       <main className='h-full w-full text-white bg-gray-900'>

@@ -44,7 +44,7 @@ export const Contact = () => {
     };
 
     return (
-        <section id="contact" className="bg-slate-800 pt-16 p-4 pb-24 rounded-lg">
+        <section id="contact" className=" pt-16 p-4 pb-24 rounded-lg">
             <motion.h2
                 variants={sectionVariants}
                 initial="hidden"
@@ -58,7 +58,7 @@ export const Contact = () => {
             <div className="max-w-screen-md mx-auto flex flex-col md:flex-row ">
                 {/* Left Side - Form Fields */}
                 <motion.div
-                    className="md:w-1/3 p-4 bg-slate-900 rounded md:rounded-s-lg shadow-md"
+                    className="md:w-1/3 p-4 bg-slate-800 rounded md:rounded-s-lg shadow-md"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }} // Animate once when in view

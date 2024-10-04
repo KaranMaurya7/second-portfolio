@@ -41,8 +41,8 @@ export const Navbar = () => {
 					
 					<a href="#home" className="hover:text-green-300 hover:border-b-2 transition duration-300">Home</a>
 					<a href="#about" className="hover:text-green-300 hover:border-b-2 transition duration-300">About</a>
-					<a href="#contact" className="hover:text-green-300 hover:border-b-2 transition duration-300">Contact</a>
 					<a href="#projects" className="hover:text-green-300 hover:border-b-2 transition- duration-300">Projects</a>
+					<a href="#contact" className="hover:text-green-300 hover:border-b-2 transition duration-300">Contact</a>
 					
 					<a href={resume} className="border p-3 rounded-sm flex flex-row gap-2 hover:bg-blue-900 transition-all" target='_blank' rel='noopener noreferrer'>
 						Resume
@@ -97,12 +97,12 @@ export const Navbar = () => {
 					About
 				</a>
 
-				<a href="#contact" className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)}>
-					Contact
-				</a>
-
 				<a href="#projects" className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)}>
 					Projects
+				</a>
+
+				<a href="#contact" className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)}>
+					Contact
 				</a>
 
 				<a href={resume}  className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)} target='_blank' rel='noopener noreferrer'>

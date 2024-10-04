@@ -15,7 +15,7 @@ export const Projects = () => {
   const { scrollXProgress } = useScroll({ container: scrollRef });
 
   return (
-	<section id="projects" className="bg-slate-900 py-16 px-4 md:w-4/5 md:m-auto">
+	<section id="projects" className="bg-slate-800 rounded-lg py-16 px-4">
 	  
 		<motion.h2
 			initial={{ opacity: 0, y: -50 }}
@@ -27,15 +27,21 @@ export const Projects = () => {
 			My Projects
 		</motion.h2>
 
+		<div className='w-full md:w-4/5 m-auto px-10 '>
+			<span className="text-2xl  text-center text-white mb-12">Swipe to see more</span>
+			<i className="ri-arrow-right-line text-2xl ml-8"></i>
+		</div>
+
 		{/* Horizontal Scroll Container */}
 		<motion.div
 			ref={scrollRef}
-			className="max-w-full h-[400px] mx-auto overflow-x-scroll overflow-y-hidden flex gap-8 py-8 snap-x snap-mandatory scroll-smooth custom-scrollbar"
+			className="max-w-full h-[400px] mx-auto overflow-x-scroll md:w-4/5 md:m-auto overflow-y-hidden flex gap-8 py-8 snap-x snap-mandatory scroll-smooth custom-scrollbar"
 		>
+
 			{projectsData.map((project, index) => (
 			<motion.div
 				key={index}
-				className="min-w-[300px] sm:min-w-[75%] lg:min-w-[30%] bg-slate-800 p-6 rounded-lg shadow-md hover:shadow-xl transition snap-center mx-4"
+				className="min-w-[300px] sm:min-w-[75%] lg:min-w-[30%] bg-slate-950 p-6 rounded-lg shadow-md hover:-translate-y-3 hover:shadow-slate-700 transition snap-center mx-4"
 				initial={{ opacity: 0.5 }}
 				whileInView={{ opacity: 1 }}
 				viewport={{ once: true }}
@@ -51,7 +57,7 @@ export const Projects = () => {
 
 				{/* Project Title */}
 				<h3 className="text-2xl font-semibold text-white mb-2">{project.title}</h3>
-				
+
 				{/* Project Description */}
 				<p className="text-gray-400 mb-4">{project.description}</p>
 			</motion.div>
