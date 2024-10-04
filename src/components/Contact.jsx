@@ -1,84 +1,166 @@
-import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
+export const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+    });
 
-export function Contact({ secContact, setSecContact }) {
+    const sectionVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    };
 
-    const [flipContactForm, setFlipContactForm] = useState(true);
+    const formFieldVariants = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+    };
 
-    return (<>
-    
-        <AnimatePresence>
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-            {secContact &&
-                <motion.div initial={{ y: '100vw', opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.3 }} exit={{ y: '100vw', opacity: 0 }}
-                    id="contact" className="w-full h-[87%]  overflow-scroll fixed top-[12%] left-0 bg-gray-400 rounded-3xl z-10 p-5">
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic (e.g., send data to server)
+        console.log('Form submitted:', formData);
+        // Reset form data
+        resetForm();
+    };
 
-                    <h1 className=" text-2xl text-black text-center font-bold m-auto p-3">Want To Stay Connected!</h1>
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+        });
+    };
 
-                    <div className="w-full md:w-[60%] lg:w-[35%] px-4  m-auto flex flex-row justify-between items-center">
+    return (
+        <section id="contact" className="bg-slate-800 pt-16 p-4 pb-24 rounded-lg">
+            <motion.h2
+                variants={sectionVariants}
+                initial="hidden"
+                whileInView="visible"
+                className="text-3xl font-bold text-center text-white mb-8"
+                viewport={{ once: true }} // Animate once when in view
+            >
+                Contact Me
+            </motion.h2>
 
-                        <h2 className="text-black font-semibold text-lg"> Contact Us {flipContactForm ? 'Form' : 'Details'} </h2>
+            <div className="max-w-screen-md mx-auto flex flex-col md:flex-row ">
+                {/* Left Side - Form Fields */}
+                <motion.div
+                    className="md:w-1/3 p-4 bg-slate-900 rounded md:rounded-s-lg shadow-md"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }} // Animate once when in view
+                >
+                    <motion.div
+                        variants={formFieldVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                    >
+                        <label className="block text-white mb-2">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none"
+                            placeholder="Your Name"
+                        />
+                    </motion.div>
 
-                        {/* flip button  */}
-                        <img onClick={() => setFlipContactForm(!flipContactForm)} className="w-5 cursor-pointer h-5" src="https://cdn-icons-png.flaticon.com/128/318/318275.png" alt="next" />
-                    </div>
+                    <motion.div
+                        variants={formFieldVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{ delay: 0.1 }}
+                    >
+                        <label className="block text-white mb-2">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none"
+                            placeholder="Your Email"
+                        />
+                    </motion.div>
 
-                    <div className=" w-full h-full rounded-2xl m-auto lg:p-5  ">
+                    <motion.div
+                        variants={formFieldVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{ delay: 0.2 }}
+                    >
+                        <label className="block text-white mb-2">Phone No</label>
+                        <input
+                            type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none"
+                            placeholder="Your Phone Number"
+                        />
+                    </motion.div>
 
-                        <AnimatePresence>
-
-                            {flipContactForm ?
-                                <motion.form 
-                                initial={{ rotateX: 180, opacity:0 }} animate={{ rotateX: 0,opacity:1 }} transition={{duration:0.5}} exit={{ rotateX: 180,opacity:0}}
-                                
-                                className="flex bg-gray-300 shadow-xl flex-col mt-0 p-10 rounded-xl gap-6 w-full md:w-[60%] lg:w-[35%] m-auto">
-                                    <input type="name" name="name" id="name" className="w-full shadow-md h-10 p-3 outline-none bg-white rounded-lg text-black" placeholder="Full Name" />
-
-                                    <input type="email" name="email" id="email" className="w-full shadow-md h-10 p-3 outline-none bg-white rounded-lg text-black" placeholder="Email" />
-
-                                    <textarea name="mesaage" id="message" rows="10" className="w-full shadow-md h-36   p-3 outline-none bg-white rounded-lg text-black" placeholder="Type Your Message" ></textarea>
-
-                                    <div className="flex justify-start">
-                                        <button type="submit" className="shadow-lg bg-green-600 px-10 m-auto rounded-lg p-2"> Send </button>
-
-                                    </div>
-                                </motion.form>
-
-                                :
-                                <motion.div
-                                initial={{ rotateX: 180, opacity:0 }} animate={{ rotateX: 0,opacity:1 }} transition={{duration:0.5}} exit={{ rotateX: 180,opacity:0}}className="flex font-semibold text-xl text-black bg-gray-300 shadow-xl flex-col mt-0 p-10 rounded-xl gap-6 w-full md:w-[60%] lg:w-[35%] m-auto">
-                                    
-                                    <div className="flex flex-wrap">
-                                        <h1>Name :- </h1>
-                                        <h1> Karan Maurya</h1>
-                                    </div>
-
-                                    <div className="flex flex-wrap">
-                                        <h1>Email :- </h1>
-                                        <h1> bugscode07 @gmail.com</h1>
-                                    </div>
-
-                                    <div className="flex flex-wrap">
-                                        <h1>Contact :- </h1>
-                                        <h1> +919876543210</h1>
-                                    </div>
-
-                                    <div className="flex flex-wrap">
-                                        <h1>LinkdeIn :-</h1>
-                                        <a href="https://www.linkedin.com/in/karan-maurya-9b6b29259/" target="blank">Click here to Connect</a>
-                                    </div>
-                                    
-                                </motion.div>
-                            }
-
-                        </AnimatePresence>
-
-                    </div>
-
+                    <motion.div
+                        variants={formFieldVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{ delay: 0.3 }}
+                    >
+                        <label className="block text-white mb-2">Subject</label>
+                        <input
+                            type="text"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            className="w-full p-2 mb-4 bg-gray-700 rounded focus:outline-none"
+                            placeholder="Subject"
+                        />
+                    </motion.div>
                 </motion.div>
-            }
-        </AnimatePresence>
 
-    </>)
-}
+                {/* Right Side - Message */}
+                <motion.div
+                    className="md:w-2/3 rounded md:rounded-e-lg shadow-md"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }} // Animate once when in view
+                >
+                    <motion.textarea
+                        className="w-full h-full p-4 bg-gray-700 rounded focus:outline-none mb-4"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows="10"
+                        placeholder="Your Message"
+                        variants={formFieldVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        transition={{ delay: 0.1 }}
+                    ></motion.textarea>
+
+                    <motion.button
+                        className="w-full p-2 bg-blue-600 rounded hover:bg-blue-500 transition"
+                        onClick={handleSubmit}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Send Message
+                    </motion.button>
+                </motion.div>
+            </div>
+        </section>
+    );
+};

@@ -7,7 +7,7 @@ const animate = {
 		y: 0,
 		opacity: 1,
 		transition: {
-			delay: 0.5, // Shortened delay for smoother entrance
+			delay: 3.5, // Shortened delay for smoother entrance
 			duration: 0.3,
 			ease: 'easeInOut',
 		},
@@ -19,7 +19,7 @@ const imageAni = {
 	animate: {
 		opacity: 1,
 		transition: {
-			delay: 0.5, // Shortened delay for smoother entrance
+			delay: 3.5, // Shortened delay for smoother entrance
 			duration: 1,
 		},
 	},

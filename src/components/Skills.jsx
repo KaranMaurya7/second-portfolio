@@ -1,24 +1,54 @@
-import {motion} from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export function Skills() {
-    return (<>
-        <section id="skills" className="w-full rounded-3xl p-4 py-14 bg-slate-800">
-            <motion.h1 
-           
-            className="text-center p-8 rounded-lg mb-4 bg-violet-950 shadow-md shadow-slate-700 opacity-80 text-3xl m-auto w-full lg:w-[50vw]">Skills</motion.h1>
-            <div className="w-full m-auto flex flex-wrap gap-2 md:gap-[1.5rem] flex-row lg:w-[50vw] justify-evenly  ">
+// Skill data
+const skills = [
+    { name: 'Node.js', icon: '🔧' },
+    { name: 'React', icon: '⚛️' },
+    { name: 'JavaScript', icon: '🧙‍♂️' },
+    { name: 'Core Java', icon: '☕' },
+    { name: 'SQL', icon: '📊' },
+    { name: 'MySQL', icon: '🗄️' },
+    { name: 'Redis', icon: '🐇' },
+    { name: 'MongoDB', icon: '🍃' },
+    { name: 'Firebase', icon: '🔥' },
+    { name: 'Git', icon: '🧑‍💻' },
+    { name: 'HTML', icon: '📜' },
+    { name: 'CSS', icon: '🎨' },
+    { name: 'Tailwind CSS', icon: '🌊' },
+    { name: 'Express.js', icon: '🚀' },
+];
 
-                <div className="md:w-48 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> SQL </div>
-                <div className="md:w-72 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> Java </div>
-                <div className="md:w-48 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> HTML</div>
-                <div className="md:w-48 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> CSS </div>
-                <div className="md:w-72 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> Java Script </div>
-                <div className="md:w-48 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> React </div>
-                <div className="md:w-72 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> Node </div>
-                <div className="md:w-72 w-2/5 md:h-48 h-24 flex justify-center items-center cursor-pointer hover:scale-105 hover:shadow-lg bg-gray-700 p-3 hover:shadow-gray-700  transition-all rounded-lg "> Tailwind </div>
+const SkillCard = ({ skill, index }) => {
+    return (
+        <motion.div
+            whileHover={{ y: -5, transition :{  duration: 0.1} }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }} 
+            viewport={{ once: true }} 
+            className="flex flex-col items-center justify-center p-4 text-white bg-slate-800 rounded-lg shadow-md hover:shadow-lg"
+        >
+            <div className="text-5xl mb-2">{skill.icon}</div>
+            <span className="mt-2 text-lg font-semibold">{skill.name}</span>
+        </motion.div>
+    );
+};
 
+export const Skills = () => {
+    return (
+        <section
+            id="skills"
+            className=" py-16 px-4 rounded-lg"
+        >
+            <h2 className="text-3xl font-bold text-center text-white mb-8">
+                My Skills
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-screen-xl p-4 lg:p-0 lg:w-3/5 mx-auto">
+                {skills.map((skill, index) => (
+                    <SkillCard key={index} skill={skill} index={index} />
+                ))}
             </div>
         </section>
-        
-    </>)
-}
+    );
+};

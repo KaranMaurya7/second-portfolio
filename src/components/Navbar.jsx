@@ -28,7 +28,7 @@ export const Navbar = () => {
 
 
 	return (
-		<nav className="w-full fixed top-0 left-0 bg-gray-900 text-white shadow-md z-50">
+		<nav className="w-full fixed top-0 left-0 bg-gray-900 text-white shadow-md z-20">
 			{/* Main Container */}
 			<div className="max-w-screen-xl lg:w-[80vw] mx-auto px-4 md:px-8 flex justify-between items-center h-20 transition-all duration-300 ease-in-out">
 
