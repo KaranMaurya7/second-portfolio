@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import resume from '../assets/Resume.pdf';
 
 export const Navbar = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -43,10 +44,10 @@ export const Navbar = () => {
 					<a href="#contact" className="hover:text-green-300 hover:border-b-2 transition duration-300">Contact</a>
 					<a href="#projects" className="hover:text-green-300 hover:border-b-2 transition- duration-300">Projects</a>
 					
-					<button className="border p-3 rounded-sm flex flex-row gap-2 hover:bg-blue-900 transition-all">
+					<a href={resume} className="border p-3 rounded-sm flex flex-row gap-2 hover:bg-blue-900 transition-all" target='_blank' rel='noopener noreferrer'>
 						Resume
 						<i className="ri-file-download-fill hover:block"></i>
-					</button>
+					</a>
 				</div>
 
 				{/* Mobile Menu Button with Framer Motion */}
@@ -104,7 +105,7 @@ export const Navbar = () => {
 					Projects
 				</a>
 
-				<a href="#resume" className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)}>
+				<a href={resume}  className="hover:text-gray-400 text-2xl transition duration-300" onClick={() => setMenuOpen(false)} target='_blank' rel='noopener noreferrer'>
 					Resume
 				</a>
 			</motion.div>

@@ -1,4 +1,5 @@
 import profile from '../assets/3DMENOBG.png';
+import resume from '../assets/Resume.pdf';
 import { motion } from 'framer-motion';
 
 const animate = {
@@ -93,7 +94,7 @@ export function Header() {
 				</div>
 
 				<button className='text-lg hover:scale-95 hover:shadow-[5px_4px_5px_1px_rgba(0,0,0,0.5)] hover:shadow-black transition-all shadow-[10px_8px_10px_2px_rgba(0,0,0,0.5)] m-0 border w-[8rem] h-12 my-6'>
-					<a href='./Karan Maurya.pdf' target='_blank' rel='noopener noreferrer'>Resume</a>
+					<a href={resume} target='_blank' rel='noopener noreferrer'>Resume</a>
 				</button>
 				
 			</div>
