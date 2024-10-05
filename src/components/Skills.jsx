@@ -1,24 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Skill data
-const skills = [
-    { name: 'Node.js', icon: '🔧' },
-    { name: 'React', icon: '⚛️' },
-    { name: 'JavaScript', icon: '🧙‍♂️' },
-    { name: 'Core Java', icon: '☕' },
-    { name: 'SQL', icon: '📊' },
-    { name: 'MySQL', icon: '🗄️' },
-    { name: 'Redis', icon: '🐇' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'Firebase', icon: '🔥' },
-    { name: 'Git', icon: '🧑‍💻' },
-    { name: 'HTML', icon: '📜' },
-    { name: 'CSS', icon: '🎨' },
-    { name: 'Tailwind CSS', icon: '🌊' },
-    { name: 'Express.js', icon: '🚀' },
-];
-
 const SkillCard = ({ skill, index }) => {
     return (
         <motion.div
@@ -35,7 +17,7 @@ const SkillCard = ({ skill, index }) => {
     );
 };
 
-export const Skills = () => {
+export const Skills = ({skillsData} ) => {
     return (
         <section
             id="skills"
@@ -45,7 +27,7 @@ export const Skills = () => {
                 My Skills
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-screen-xl p-4 lg:p-0 lg:w-3/5 mx-auto">
-                {skills.map((skill, index) => (
+                {skillsData.map((skill, index) => (
                     <SkillCard key={index} skill={skill} index={index} />
                 ))}
             </div>
