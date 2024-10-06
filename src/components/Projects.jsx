@@ -1,5 +1,16 @@
 import React from 'react';
 import { motion, useScroll } from 'framer-motion';
+import connectingThought from '../assets/connectingThought.png';
+import eCommerce from '../assets/eCommerce.png';
+import node from '../assets/node.png';
+import movieflix from '../assets/Moviflix.png';
+import valUI from '../assets/valUI.png';
+import ipod from '../assets/Ipod.png';
+import portfolio from '../assets/portfolio.png';
+import react from '../assets/react.png';
+import catchMeGame from '../assets/catchMeGame.png';
+
+const images = {connectingThought, eCommerce, node, movieflix, valUI,ipod, portfolio, react, catchMeGame};
 
 export const Projects = ({ projectsData }) => {
 	const scrollRef = React.useRef(null);
@@ -31,7 +42,9 @@ export const Projects = ({ projectsData }) => {
 				className="max-w-full h-[450px] mx-auto overflow-x-scroll lg:w-4/5 md:m-auto overflow-y-hidden flex gap-8 py-8 snap-x snap-mandatory scroll-smooth custom-scrollbar"
 			>
 				{/* Project Cards */}
+				
 				{projectsData.map((project, index) => (
+
 					<motion.div
 						key={index}
 						className="min-w-[300px] sm:min-w-[80%] md:min-w-[40%] lg:min-w-[30%] bg-slate-950 p-6 rounded-lg shadow-md hover:-translate-y-3 hover:shadow-slate-700 transition snap-center mx-4 overflow-hidden"
@@ -41,11 +54,11 @@ export const Projects = ({ projectsData }) => {
 					>
 						{/* Project Image */}
 						<motion.img
-							src={project.image}
-							alt={project.title}
+							src={project.image && images[project.image]}
+							alt={project.name}
 							whileHover={{ scale: 1.05 }} // Add a hover effect to scale up the image slightly
 							transition={{ type: 'spring', stiffness: 300 }}
-							className="w-full h-48 rounded-lg mb-4 object-cover"
+							className="w-full h-40 rounded-lg mb-4 object-cover"
 						/>
 
 						{/* Project Title */}
@@ -73,7 +86,7 @@ export const Projects = ({ projectsData }) => {
 									rel='noopener noreferrer' 
 									className='w-full sm:w-32 bg-gray-700 py-2 px-4 rounded text-center text-white hover:bg-gray-800 transition duration-300'
 								>
-									Source Code
+									Code
 								</a>
 							)}
 
