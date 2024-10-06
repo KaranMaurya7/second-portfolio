@@ -26,7 +26,7 @@ const imageAni = {
 	},
 };
 
-export function Header() {
+export function Header({userData}) {
 	return (
 		<div
 			id='home'
@@ -56,7 +56,7 @@ export function Header() {
 				>
 					Hi, it's{' '}
 					<span className='font-bold font-josefin text-green-300 hover:border-b-2'>
-						Karan Maurya
+					{userData.firstName+` ` + userData.lastName}
 					</span>
 				</motion.h2>
 
@@ -66,11 +66,11 @@ export function Header() {
 					animate='animate'
 					className='text-[1.2rem] lg:text-[1.5rem] '
 				>
-				  I am a <span className='text-cyan-300'>Junior Software Engineer</span>
+				  I am a <span className='text-cyan-300'>{userData.currentPosition}</span>
 				</motion.h3>
 
 				<h4 className='text-green-500 text-[1rem] mt-1 lg:text-[1rem]'>
-					Turning ideas into interactive digital experiences.
+					{userData.headline}
 				</h4>
 
 				<p className='pt-3 text-justify'>
@@ -79,16 +79,16 @@ export function Header() {
 
 				{/* Social Icons */}
 				<div className='flex mt-4 flex-row gap-6'>
-					<a href='https://www.linkedin.com/in/karan-maurya-9b6b29259/' target='_blank' rel='noopener noreferrer'>
+					<a href={userData.linkedIn} target='_blank' rel='noopener noreferrer'>
 						<img className='w-8' src='https://cdn-icons-png.flaticon.com/128/3991/3991775.png' alt='LinkedIn logo' />
 					</a>
-					<a href='https://github.com/KaranMaurya7' target='_blank' rel='noopener noreferrer'>
+					<a href={userData.github} target='_blank' rel='noopener noreferrer'>
 						<img className='w-8 brightness-0 invert' src='https://cdn-icons-png.flaticon.com/128/25/25657.png' alt='GitHub logo' />
 					</a>
-					<a href='mailto:karanmaurya115@gmail.com' target='_blank' rel='noopener noreferrer'>
+					<a href={`mailto:${userData.emailId}`} target='_blank' rel='noopener noreferrer'>
 						<img className='w-8' src='https://cdn-icons-png.flaticon.com/128/893/893247.png' alt='Email logo' />
 					</a>
-					<a href='https://www.instagram.com/_bugs__bunny___/?hl=en' target='_blank' rel='noopener noreferrer'>
+					<a href={userData.instaId} target='_blank' rel='noopener noreferrer'>
 						<img className='w-8' src='https://cdn-icons-png.flaticon.com/128/1384/1384063.png' alt='Instagram logo' />
 					</a>
 				</div>

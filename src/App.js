@@ -10,14 +10,29 @@ import { Footer } from './components/Footer';
 import { Projects } from './components/Projects';
 import { collection, doc, getDoc, getDocs, getFirestore } from 'firebase/firestore';
 import { app } from "./dbConfig.js";
+import { Notification } from './components/Notification.jsx';
 
 const firestore = getFirestore(app);
 
 export default function App() {
-	const [secContact, setSecContact] = useState(false);
 	const [userData, setUserData] = useState({});
 	const [skillsData, setSkillsData] = useState([]);
 	const [projectsData, setProjectsData] = useState([]);
+
+	const[notification, setNotification] = useState({  
+		message: "",
+		type: "",
+	});
+
+	// Function to show the notification
+	const showNotification = (message, type) => {
+		setNotification({ message, type });
+
+		// Automatically hide the notification after 3 seconds
+		setTimeout(() => {
+			setNotification({ message: "", type: "" });
+		}, 3000);
+	}
 
 	// Generic function to fetch data from any subcollection
 	const fetchSubcollectionData = async (userId, subcollectionName) => {
@@ -37,7 +52,6 @@ export default function App() {
 		const docSnap = await getDoc(docRef);
 
 		if (docSnap.exists()) {
-			console.log("Document data:", docSnap.data());
 			return docSnap.data();
 		} else {
 			console.log("No such document!");
@@ -84,22 +98,24 @@ export default function App() {
 
 
 	useEffect(() => {
-		console.log("Skills Data:", skillsData);
-		console.log("Projects Data:", projectsData);
+		console.log("Skills Data:");
+		console.log("Projects Data:");
 	}, [skillsData, projectsData]);
 
 	return (
 		<>
 			<Transition />
-			<Navbar secContact={secContact} setSecContact={setSecContact} />
+			<Navbar userData={userData}/>
 
 			<main className='h-full w-full text-white bg-gray-900'>
-				<Header />
+				<Notification message={notification.message} type={notification.type} />
+
+				<Header userData={userData}/>
 				<About />
 				<Skills skillsData={skillsData} /> {/* Pass skills data to Skills component */}
 				<Projects projectsData={projectsData} /> {/* Pass projects data to Projects component */}
-				<Contact />
-				<Footer />
+				<Contact firestore={firestore} showNotification = {showNotification}/>
+				<Footer userData={userData}/>
 			</main>
 
 		</>

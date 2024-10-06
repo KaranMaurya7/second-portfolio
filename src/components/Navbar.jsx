@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import resume from '../assets/Resume.pdf';
 
-export const Navbar = () => {
+export const Navbar = ({userData}) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	// Variants for Hamburger Icon Lines
@@ -34,7 +34,7 @@ export const Navbar = () => {
 			<div className="max-w-screen-xl lg:w-[80vw] mx-auto px-4 md:px-8 flex justify-between items-center h-20 transition-all duration-300 ease-in-out">
 
 				{/* Right Side: Name */}
-				<div className="font-bold text-3xl font-josefin z-10">Karan <span className='text-green-400'>Maurya</span></div>
+				<div className="font-bold text-3xl font-josefin z-10">{userData.firstName} <span className='text-green-400'>{userData.lastName}</span></div>
 
 				{/* Left Side: Menu Links (Hidden on smaller screens) */}
 				<div className="hidden md:flex items-center space-x-8">
