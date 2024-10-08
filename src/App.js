@@ -62,44 +62,41 @@ export default function App() {
 	// Using useEffect to retrieve data on mount
 	useEffect(() => {
 		const fetchData = async () => {
-			// Check for cached data in localStorage
-			const cachedUserData = localStorage.getItem("userData");
-			const cachedSkillsData = localStorage.getItem("skillsData");
-			const cachedProjectsData = localStorage.getItem("projectsData");
-
-			// Load from cache if available
-			if (cachedUserData) {
-				setUserData(JSON.parse(cachedUserData));
+			const currentTime = Date.now();
+			const CACHE_EXPIRY = 24 * 60 * 60 * 1000;
+	
+			// Fetch cached data and parse timestamps if available
+			const cachedUserData = JSON.parse(localStorage.getItem("userData"));
+			const cachedSkillsData = JSON.parse(localStorage.getItem("skillsData"));
+			const cachedProjectsData = JSON.parse(localStorage.getItem("projectsData"));
+			const lastFetchedTime = JSON.parse(localStorage.getItem("lastFetchedTime"));
+	
+			// If cache is valid, use it; otherwise, re-fetch and store new data
+			if (lastFetchedTime && currentTime - lastFetchedTime < CACHE_EXPIRY) {
+				cachedUserData && setUserData(cachedUserData);
+				cachedSkillsData && setSkillsData(cachedSkillsData);
+				cachedProjectsData && setProjectsData(cachedProjectsData);
 			} else {
 				const user = await userDataFireStore();
 				setUserData(user);
-				localStorage.setItem("userData", JSON.stringify(user));
-			}
-
-			if (cachedSkillsData) {
-				setSkillsData(JSON.parse(cachedSkillsData));
-			} else {
 				const skills = await fetchSubcollectionData("user1", "skills");
 				setSkillsData(skills);
-				localStorage.setItem("skillsData", JSON.stringify(skills));
-			}
-
-			if (cachedProjectsData) {
-				setProjectsData(JSON.parse(cachedProjectsData));
-			} else {
 				const projects = await fetchSubcollectionData("user1", "projects");
 				setProjectsData(projects);
+	
+				// Store fresh data and update the timestamp
+				localStorage.setItem("userData", JSON.stringify(user));
+				localStorage.setItem("skillsData", JSON.stringify(skills));
 				localStorage.setItem("projectsData", JSON.stringify(projects));
+				localStorage.setItem("lastFetchedTime", JSON.stringify(currentTime));
 			}
 		};
-
+	
 		fetchData();
 	}, []);
 
-
 	useEffect(() => {
-		console.log("Skills Data:");
-		console.log("Projects Data:");
+		console.log("Data");
 	}, [skillsData, projectsData]);
 
 	return (
